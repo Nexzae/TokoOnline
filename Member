@@ -1,0 +1,73 @@
+package tokoonline;
+
+import java.util.ArrayList;
+
+public class Member implements User{
+    
+   ArrayList<String> namaMember = new ArrayList<String>();
+    ArrayList<String> alamat = new ArrayList<String>();
+    ArrayList<String> telepon = new ArrayList<String>();
+    ArrayList<Integer> saldo = new ArrayList<Integer>();
+    
+    void member(){
+        
+        setNama("Abdul");
+        setAlamat("sdj");
+        setTelepon("6789");
+        setSaldo(400000);
+        
+        System.out.println("<===============DataBase Member===============>");
+        System.out.println("");
+        for (int i = 1; i < namaMember.size(); i++) {
+            System.out.println("Nama Member     : "+getNama(i));
+            System.out.println("Alamat Member   : "+getAlamat(i));
+            System.out.println("Telepon Member  : "+getTelepon(i));
+            System.out.println("Jumlah Member   : "+getSaldo(i));
+            System.out.println("\n------------------------------\n");
+        }
+        System.out.println("Jumlah Member: "+getJmlhMember());
+        System.out.println("<===========================================>");
+    }
+    void setSaldo(int setSaldo){
+        this.saldo.add(setSaldo);
+    }
+    int getSaldo(int idMember){
+        return this.saldo.get(idMember);
+    }
+    void editSaldo(int idMember,int Saldo){
+        this.saldo.set(idMember, Saldo);
+    }
+    int getJmlhMember(){
+        return this.namaMember.size();
+    }
+
+    @Override
+    public String getNama(int idMember) {
+        return this.namaMember.get(idMember);
+    }
+
+    @Override
+    public String getAlamat(int idMember) {
+        return this.alamat.get(idMember);
+    }
+
+    @Override
+    public String getTelepon(int idMember) {
+        return this.telepon.get(idMember);
+    }
+
+    @Override
+    public void setNama(String nama) {
+        this.namaMember.add(nama);
+    }
+
+    @Override
+    public void setAlamat(String alamat) {
+        this.alamat.add(alamat);
+    }
+
+    @Override
+    public void setTelepon(String telepon) {
+        this.telepon.add(telepon);
+    }
+}
