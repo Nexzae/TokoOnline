@@ -1,0 +1,65 @@
+package tokoonline;
+
+import java.util.ArrayList;
+
+public class Barang {
+
+    private ArrayList<String> namaBarang = new ArrayList<String>();
+    private ArrayList<Integer> stok = new ArrayList<Integer>();
+    private ArrayList<Integer> harga = new ArrayList<Integer>();
+
+    public void Barang() {
+        this.namaBarang.add("Null");
+        this.stok.add(null);
+        this.harga.add(null);
+        this.namaBarang.add("Aoka(Code 1)               ");
+        this.stok.add(15);
+        this.harga.add(2000);
+        this.namaBarang.add("Beng-Beng(Code 2)          ");
+        this.stok.add(30);
+        this.harga.add(2500);
+        this.namaBarang.add("Basreng(Code 3)            ");
+        this.stok.add(20);
+        this.harga.add(8000);
+
+        System.out.println("<=============== DataBase Barang ===============>");
+        System.out.println("");
+        System.out.println("NamaBarang      Stok        Harga");
+        for (int i = 1; i < namaBarang.size(); i++) {
+            System.out.println(getNama(i) + getStok(i) + "        " + getHarga(i));
+        }
+        System.out.println("\n----------------------------------------\n");
+    }
+
+    public int getJmlh() {
+        return this.namaBarang.size();
+    }
+
+    public void setNama(String namaBarang) {
+        this.namaBarang.add(namaBarang);
+    }
+
+    public String getNama(int idBarang) {
+        return this.namaBarang.get(idBarang);
+    }
+
+    public void setStok(int stok) {
+        this.stok.add(stok);
+    }
+
+    public int getStok(int idBarang) {
+        return this.stok.get(idBarang);
+    }
+
+    public void editStok(int idBarang, int stok) {
+        this.stok.set(idBarang, stok);;
+    }
+
+    public void setHarga(int harga) {
+        this.harga.add(harga);
+    }
+
+    public int getHarga(int idBarang) {
+        return this.harga.get(idBarang);
+    }
+}
