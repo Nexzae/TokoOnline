@@ -1,0 +1,138 @@
+package tokoonline;
+
+import java.util.Scanner;
+
+public class TokoOnline {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Karyawan kr = new Karyawan();
+        Member mb = new Member();
+        Barang br = new Barang();
+        Transaksi tr = new Transaksi();
+        Laporan lp = new Laporan();
+
+        String ulang,
+                Opsi;
+
+        System.out.println("<================================================>\n");
+        System.out.println("Login TokoOnline sebagai:\n\n-Karyawan\n-Member\n");
+        System.out.print("Opsi yang dipilih: ");
+        Opsi = sc.next();
+
+        if (Opsi.equalsIgnoreCase("Karyawan")) {
+            System.out.println("<================================================>\n");
+            System.out.println("Apakah Anda ingin menambah DataBase Member?\nYes (Menambah DataBase)\nNo (Opsi untuk menggunakan DataBase yang sudah ada)\n");
+            System.out.print("Opsi yang dipilih: ");
+            Opsi = sc.next();
+
+            if (Opsi.equalsIgnoreCase("Yes")) {
+                System.out.println("<===============Form DataBase Member===============>\n");
+                do {
+                    System.out.print("Masukan Nama Member   : ");
+                    String nama = sc.next();
+                    mb.setNama(nama);
+                    System.out.print("Masukan Alamat Member : ");
+                    String alamat = sc.next();
+                    mb.setAlamat(alamat);
+                    System.out.print("Masukan Nomor Telepon : ");
+                    String telepon = sc.next();
+                    mb.setTelepon(telepon);
+                    System.out.print("Masukan Saldo         : ");
+                    int saldo = sc.nextInt();
+                    mb.setSaldo(saldo);
+                    System.out.println("\n----------------------------------------\n");
+                    System.out.println("Apakah menambah DataBase Member lagi?\nYes\nNo");
+                    System.out.print("Opsi yang dipilih: ");
+                    ulang = sc.next();
+                } while (ulang.equalsIgnoreCase("y"));
+                mb.member();
+                System.out.println("\n<===Lanjut mengisi Form DataBase Karyawan===>\n");
+            } else if (Opsi.equalsIgnoreCase("No")) {
+                mb.member();
+                System.out.println("\n<===DataBase Karyawan===>\n");
+            } else {
+                System.out.println("Maaf Input yang Anda Masukan Salah!");
+                return;
+            }
+
+            System.out.println("<================================================>\n");
+            System.out.println("Apakah Anda ingin menambah DataBase Karyawan?\nYes (Menambah DataBase)\nNo (Opsi untuk menggunakan DataBase yang sudah ada)\n");
+            System.out.print("Opsi yang dipilih: ");
+            Opsi = sc.next();
+
+            if (Opsi.equalsIgnoreCase("Yes")) {
+                System.out.println("<===============DataBase Karyawan===============>\n");
+                do {
+                    System.out.print("Masukan Nama Karyawan     : ");
+                    String nama = sc.next();
+                    kr.setNama(nama);
+                    System.out.print("Masukan Alamat Karyawan   : ");
+                    String alamat = sc.next();
+                    kr.setAlamat(alamat);
+                    System.out.print("Masukan Nomor Telepon     : ");
+                    String telepon = sc.next();
+                    kr.setTelepon(telepon);
+                    System.out.print("Masukan Saldo             : ");
+                    int saldo = sc.nextInt();
+                    kr.setSaldo(saldo);
+                    System.out.println("\n----------------------------------------\n");
+                    System.out.println("Apakah menambah DataBase Karyawan lagi?\nY\nN");
+                    ulang = sc.next();
+                } while (ulang.equalsIgnoreCase("y"));
+                kr.karyawan();
+                System.out.println("\n<===Lanjut mengisi Form DataBase ===>\n");
+            } else if (Opsi.equalsIgnoreCase("No")) {
+                kr.karyawan();
+                System.out.println("\n<===Lanjut mengisi DataBase Barang ===>\n");
+            } else {
+                System.out.println("Maaf Input yang Anda Masukan Salah!");
+                return;
+            }
+            System.out.println("<================================================>\n");
+            System.out.println("Apakah Anda ingin menambah DataBase Barang?\nYes (Menambah DataBase)\nNo (Opsi untuk menggunakan DataBase yang sudah ada)\n");
+            System.out.print("Opsi yang dipilih: ");
+            Opsi = sc.next();
+
+            if (Opsi.equalsIgnoreCase("Yes")) {
+                System.out.println("<===============DataBase Barang===============>\n");
+                do {
+                    System.out.print("Masukan Nama Barang     : ");
+                    String nama = sc.next();
+                    br.setNama(nama);
+                    System.out.print("Masukan Stok Barang     : ");
+                    int stok = sc.nextInt();
+                    br.setStok(stok);
+                    System.out.print("Masukan Harga Barang    : ");
+                    int harga = sc.nextInt();
+                    br.setHarga(harga);
+                    System.out.println("\n----------------------------------------\n");
+                    System.out.println("Apakah menambah DataBase Karyawan lagi?\nY\nN");
+                    ulang = sc.next();
+                } while (ulang.equalsIgnoreCase("y"));
+                br.Barang();
+                System.out.println("\n<===Lanjut mengisi Form DataBase ===>\n");
+            } else if (Opsi.equalsIgnoreCase("No")) {
+                kr.karyawan();
+                mb.member();
+                br.Barang();
+            } else {
+                System.out.println("Maaf Input yang Anda Masukan Salah!");
+                return;
+            }
+        } else if (Opsi.equalsIgnoreCase("Member")) {
+            System.out.println("\n<==========Welcome Member==========>\n");
+            lp.laporan(br);
+            mb.member();
+
+            tr.prosesTransaksi(mb, tr, br);
+            System.out.println("\n<==========Laporan==========>\n");
+            lp.laporan(mb);
+            System.out.println("");
+            lp.laporan(tr, br);
+        } else {
+            System.out.println("Maaf Input yang Anda Masukan Salah!");
+            return;
+        }
+    }
+}
