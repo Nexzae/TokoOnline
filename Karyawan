@@ -1,0 +1,74 @@
+package tokoonline;
+
+import java.util.ArrayList;
+
+public class Karyawan implements User{
+     
+   ArrayList<String> namaKaryawan = new ArrayList<String>();
+    ArrayList<String> alamat = new ArrayList<String>();
+    ArrayList<String> telepon = new ArrayList<String>();
+    ArrayList<Integer> saldo = new ArrayList<Integer>();
+    
+    void karyawan(){
+        
+        setNama("Budi");
+        setAlamat("Tbn");
+        setTelepon("6789");
+        setSaldo(200000);
+        
+       System.out.println("<=============== DataBase Karyawan ===============>");
+        System.out.println("");
+        for (int i = 1; i < namaKaryawan.size(); i++) {
+            System.out.println("Nama Karyawan       : "+getNama(i));
+            System.out.println("Alamat Karyawan     : "+getAlamat(i));
+            System.out.println("Telepon Karyawan    : "+getTelepon(i));
+            System.out.println("Jumlah Saldo        : "+getSaldo(i));
+            System.out.println("\n------------------------------\n");
+        }
+        System.out.println("Jumlah Karyawan: "+getJmlhKaryawan());
+        System.out.println("<===========================================>");
+    }
+    void setSaldo(int setSaldo){
+        this.saldo.add(setSaldo);
+    }
+    int getSaldo(int idKaryawan){
+        return this.saldo.get(idKaryawan);
+    }
+    void editSaldo(int idKaryawan,int Saldo){
+        this.saldo.set(idKaryawan, Saldo);
+    }
+    int getJmlhKaryawan(){
+        return this.namaKaryawan.size();
+    }
+
+    @Override
+    public String getNama(int idKaryawan) {
+        return this.namaKaryawan.get(idKaryawan);
+    }
+
+    @Override
+    public String getAlamat(int idKaryawan) {
+        return this.alamat.get(idKaryawan);
+    }
+
+    @Override
+    public String getTelepon(int idKaryawan) {
+        return this.telepon.get(idKaryawan);
+    }
+
+    @Override
+    public void setNama(String nama) {
+        this.namaKaryawan.add(nama);
+    }
+
+    @Override
+    public void setAlamat(String alamat) {
+        this.alamat.add(alamat);
+    }
+
+    @Override
+    public void setTelepon(String telepon) {
+        this.telepon.add(telepon);
+    }
+
+}
